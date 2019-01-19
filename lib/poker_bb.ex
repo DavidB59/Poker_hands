@@ -108,7 +108,10 @@ defmodule PokerBb do
     end
   end
 
-  # Return rank of the hand
+  # Return rank of the hand as an integer
+  # 1 for high card,  2 for pair, 3 for two pairs, 4 for three of a kind
+  # 5 for  straight, 6 for flush, 7 for full house, 8 for four of a kind
+  # 9 for straight flush 
   def handPower(hand) do
     cond do
       flush(hand) and straight(hand) ->
@@ -259,6 +262,25 @@ defmodule PokerBb do
 
       true ->
         3
+    end
+  end
+
+  def takeInput do
+    IO.puts("follow the format Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH")
+    input = IO.gets("Input:")
+    list = String.split(input)
+
+    case length(list) do
+      12 ->
+        {black, white} = Enum.split(list, 6)
+        {_color1, hand1} = Enum.split(black, 1)
+        {_color2, hand2} = Enum.split(white, 1)
+        IO.puts(black)
+        IO.puts(white)
+        winner(hand1, hand2)
+
+      _ ->
+        IO.puts("format not respected")
     end
   end
 end
