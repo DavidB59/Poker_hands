@@ -102,13 +102,13 @@ defmodule PokerBbTest do
 
 #test tie breaker
 test "straightFlush tiebreaker" do
-  assert PokerBb.winner(straightFlush(),straightFlush2()) == {1,"high card:","Seven"}
+  assert PokerBb.winner(straightFlush(),straightFlush2()) == {1,"high card:","7"}
 end
 test "four tiebreaker" do
-  assert PokerBb.winner(four(),four2()) == {1,"high card:","Five"}
+  assert PokerBb.winner(four(),four2()) == {1,"high card:","5"}
 end
 test "fullHouse tiebreaker" do
-  assert PokerBb.winner(fullHouse(),fullHouse2()) =={1,"high card:","Six"}
+  assert PokerBb.winner(fullHouse(),fullHouse2()) =={1,"high card:","6"}
 end
 test "flush tiebreaker" do
   assert PokerBb.winner(flush(),flush2()) == {1,"high card:","Ace"}
@@ -126,19 +126,19 @@ test "two pairs tiebreaker if both hands have two pairs with same cards for both
   assert PokerBb.winner(twoPair(),twoPair3()) == {1,"high card:","Jack"}
 end
 test "two pairs tiebreaker if both hands have two pairs with same cards for first pair" do
-  assert PokerBb.winner(twoPair(),twoPair4()) == {1,"high card:","Ten"}
+  assert PokerBb.winner(twoPair(),twoPair4()) == {1,"high card:","10"}
 end
 test "pair tiebreaker if both hands have a pair, first hand  has highed pair" do
-  assert PokerBb.winner(pair(),pair2()) == {1,"high card:","Six"}
+  assert PokerBb.winner(pair(),pair2()) == {1,"high card:","6"}
 end
 test "pair tiebreaker if both hands have a pair with same value, two higher cards equal, only the 5th card is different" do
-  assert PokerBb.winner(pair(),pair3()) == {1,"high card:","Five"}
+  assert PokerBb.winner(pair(),pair3()) == {1,"high card:","5"}
 end
 test "high card tiebreaker, first card is the same" do
   assert PokerBb.winner(high(),high2()) == {1,"high card:","Jack"}
 end
 test "high card tiebreaker, all cards are the same except last one" do
-  assert PokerBb.winner(high(),high3()) == {1,"high card:","Three"}
+  assert PokerBb.winner(high(),high3()) == {1,"high card:","3"}
 end
 
 #test draw

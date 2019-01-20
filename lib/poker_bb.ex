@@ -25,15 +25,15 @@ defmodule PokerBb do
   # give the type of cards corresponding to its index from the cardPower function
   def whichCard(index) do
     name = [
-      "Two",
-      "Three",
-      "Four",
-      "Five",
-      "Six",
-      "Seven",
-      "Heigh",
-      "Nine",
-      "Ten",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
       "Jack",
       "Queen",
       "King",
@@ -213,7 +213,6 @@ defmodule PokerBb do
           3 ->
             [head1 | tail1] = hand1_ordered |> removing
             [head2 | tail2] = hand2_ordered |> removing
-            IO.puts("head1 #{head1} tail1 #{tail1} head2 #{head2} tail2 #{tail2}")
             cond do
               head1 > head2 ->
                 {1, "high card:", whichCard(head1)}
@@ -226,11 +225,12 @@ defmodule PokerBb do
               head1 === head2 ->
                 cond do
                   tail1 > tail2 ->
-                    {1, "high card:", whichCard(tail1)}
+                    {1, "high card:", whichCard(Enum.at(tail1,0))}
 
 
                   tail1 < tail2 ->
-                    {2, "high card:", whichCard(tail2)}
+                    {2, "high card:", whichCard(Enum.at(tail2,0))}
+
 
 
                   tail1 === tail2 ->
@@ -316,8 +316,8 @@ defmodule PokerBb do
         {black, white} = Enum.split(list, 6)
         {_color1, hand1} = Enum.split(black, 1)
         {_color2, hand2} = Enum.split(white, 1)
-        IO.puts(black)
-        IO.puts(white)
+        #IO.puts(black)
+        #IO.puts(white)
         winner(hand1, hand2)
 
       _ ->
