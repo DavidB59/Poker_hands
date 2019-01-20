@@ -72,22 +72,22 @@ defmodule PokerBb do
     # case length(removing(hand)) do
     case removing(hand) |> length do
       0 ->
-        # IO.puts("high card")
+        # high card
         1
 
       1 ->
-        # IO.puts("one pair")
+        # one pair
         2
 
       2 ->
         # case length(removing(removing(hand))) do
         case removing(hand) |> removing |> length do
           1 ->
-            # IO.puts("three of a kind")
+            # three of a kind
             4
 
           0 ->
-            # IO.puts("two pairs")
+            # two pairs
             3
 
           _ ->
@@ -98,11 +98,11 @@ defmodule PokerBb do
         # case length(removing(removing(hand))) do
         case removing(hand) |> removing |> length do
           1 ->
-            # IO.puts("full house")
+            # full house
             7
 
           2 ->
-            # IO.puts("four of a kind")
+            # four of a kind
             8
 
           _ ->
@@ -121,15 +121,15 @@ defmodule PokerBb do
   def handPower(hand) do
     cond do
       flush(hand) and straight(hand) ->
-        # IO.puts("Straight flush")
+        # Straight flush
         9
 
       flush(hand) ->
-        # IO.puts("flush")
+        # flush
         6
 
       straight(hand) ->
-        # IO.puts("straight")
+        # straight
         5
 
       true ->
@@ -309,15 +309,11 @@ defmodule PokerBb do
     IO.puts("follow the format Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH")
     input = IO.gets("")
     list = String.split(input)
-    # IO.puts(input)
-    # IO.puts(list)
     case length(list) do
       12 ->
         {black, white} = Enum.split(list, 6)
         {_color1, hand1} = Enum.split(black, 1)
         {_color2, hand2} = Enum.split(white, 1)
-        #IO.puts(black)
-        #IO.puts(white)
         winner(hand1, hand2)
 
       _ ->
