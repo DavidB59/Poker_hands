@@ -24,7 +24,7 @@ defmodule PokerBb do
 
   # give the type of cards corresponding to its index from the cardPower function
   def whichCard(index) do
-    name = [
+    name ={
       "2",
       "3",
       "4",
@@ -38,9 +38,9 @@ defmodule PokerBb do
       "Queen",
       "King",
       "Ace"
-    ]
+    }
 
-    Enum.at(name, index)
+    elem(name, index)
   end
 
   # return the hand sorted from the strongest card to the weakest card
@@ -138,7 +138,7 @@ defmodule PokerBb do
 
   # give the type of hand corresponding to its index from the handPower
   def whichHand(index) do
-    name = [
+    name = {
       "index0",
       "high card",
       "pair",
@@ -149,9 +149,9 @@ defmodule PokerBb do
       "full house",
       "four of a kind",
       "straight flush"
-    ]
+    }
 
-    Enum.at(name, index)
+    elem(name, index)
   end
 
   # compare the cards of both hand one by one - must be called on ordered hands ( cardsByPower)
