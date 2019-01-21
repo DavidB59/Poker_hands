@@ -150,8 +150,5 @@ test "both hands identical, high card" do
 end
 
 
-test "greets the world" do
-  assert PokerBb.test() == :tata
-end
 end
 

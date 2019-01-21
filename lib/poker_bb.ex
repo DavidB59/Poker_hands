@@ -306,7 +306,8 @@ defmodule PokerBb do
   end
 
   def takeInput do
-    IO.puts("follow the format Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH")
+    IO.puts("Give both hands")
+    IO.puts("follow the format: 'Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH'")
     input = IO.gets("")
     list = String.split(input)
     case length(list) do
@@ -321,7 +322,7 @@ defmodule PokerBb do
     end
   end
 
-  def output do
+  def final do
     a = takeInput()
 
     case elem(a, 0) do
@@ -348,7 +349,4 @@ defmodule PokerBb do
     end
   end
 
-  def test do
-    :tata
-  end
 end
