@@ -80,7 +80,6 @@ defmodule PokerBb do
         2
 
       2 ->
-        # case length(removing(removing(hand))) do
         case removing(hand) |> removing |> length do
           1 ->
             # three of a kind
@@ -200,10 +199,8 @@ defmodule PokerBb do
               valuePair1 > valuePair2 ->
                 {1, "high card:", whichCard(valuePair1)}
 
-
               valuePair1 < valuePair2 ->
                 {2, "high card:", whichCard(valuePair2)}
-
 
               valuePair1 === valuePair2 ->
                 tieBreaker(hand1_ordered, hand2_ordered, 0)
@@ -213,25 +210,21 @@ defmodule PokerBb do
           3 ->
             [head1 | tail1] = hand1_ordered |> removing
             [head2 | tail2] = hand2_ordered |> removing
+
             cond do
               head1 > head2 ->
                 {1, "high card:", whichCard(head1)}
 
-
               head1 < head2 ->
                 {2, "high card:", whichCard(head2)}
-
 
               head1 === head2 ->
                 cond do
                   tail1 > tail2 ->
-                    {1, "high card:", whichCard(Enum.at(tail1,0))}
-
+                    {1, "high card:", whichCard(Enum.at(tail1, 0))}
 
                   tail1 < tail2 ->
-                    {2, "high card:", whichCard(Enum.at(tail2,0))}
-
-
+                    {2, "high card:", whichCard(Enum.at(tail2, 0))}
 
                   tail1 === tail2 ->
                     tieBreaker(hand1_ordered, hand2_ordered, 0)
@@ -247,10 +240,8 @@ defmodule PokerBb do
               valueTriplet1 > valueTriplet2 ->
                 {1, "high card:", whichCard(valueTriplet1)}
 
-
               valueTriplet1 < valueTriplet2 ->
                 {2, "high card:", whichCard(valueTriplet2)}
-
 
               valueTriplet1 === valueTriplet2 ->
                 {3}
@@ -276,10 +267,8 @@ defmodule PokerBb do
               valueTriplet1 > valueTriplet2 ->
                 {1, "high card:", whichCard(valueTriplet1)}
 
-
               valueTriplet1 < valueTriplet2 ->
                 {2, "high card:", whichCard(valueTriplet2)}
-
 
               valueTriplet1 === valueTriplet2 ->
                 {3}
@@ -310,6 +299,7 @@ defmodule PokerBb do
     IO.puts("follow the format: 'Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH'")
     input = IO.gets("")
     list = String.split(input)
+
     case length(list) do
       12 ->
         {black, white} = Enum.split(list, 6)
@@ -328,19 +318,22 @@ defmodule PokerBb do
     case elem(a, 0) do
       1 ->
         case tuple_size(a) do
-          2->
+          2 ->
             "Black wins - #{elem(a, 1)}"
-          3->
+
+          3 ->
             "Black wins - #{elem(a, 1)} #{elem(a, 2)}"
         end
 
       2 ->
         case tuple_size(a) do
-          2->
+          2 ->
             "White wins - #{elem(a, 1)}"
-          3->
+
+          3 ->
             "White wins - #{elem(a, 1)} #{elem(a, 2)}"
         end
+
       3 ->
         "Tie"
 
@@ -348,5 +341,4 @@ defmodule PokerBb do
         IO.puts("error")
     end
   end
-
 end
